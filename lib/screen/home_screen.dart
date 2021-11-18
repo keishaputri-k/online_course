@@ -132,6 +132,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         articlesImage: 'assets/images/image_ui.png',
                         articlesCourse: 'UI Design')
                   ],
+                ),
+                Column(
+                  children: [
+                    ArticlesItem(
+                        articlesName:
+                        'How to: Digital Art from\nSketch',
+                        articlesImage: 'assets/images/image_sketch.png',
+                        articlesCourse: 'Art Course')
+                  ],
                 )
               ],
             ),

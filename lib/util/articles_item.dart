@@ -22,48 +22,50 @@ class _ArticlesItemState extends State<ArticlesItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        color: Colors.white,
-      ),
-      child: Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.horizontal(left: Radius.circular(20.0)),
+    return Stack(children: [
+      Container(
+        margin: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          color: Colors.white,
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10)),
+              child: Image.asset(widget.articlesImage,
+                  width: 86, height: 80, fit: BoxFit.cover),
             ),
-            child: Image.asset(widget.articlesImage, width: 86, height: 80),
-          ),
-          SizedBox(width: 12.0),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(widget.articlesName,
-                  style: blackTextStyle.copyWith(
-                      fontWeight: FontWeight.bold, fontSize: 12.0)),
-              SizedBox(height: 5.0),
-              Text(widget.articlesCourse,
-                  style: greyTextStyle.copyWith(fontSize: 10.0))
-            ],
-          ),
-          Spacer(),
-          IconButton(
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.redAccent : Colors.grey,
-              size: 16.0,
+            SizedBox(width: 12.0),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(widget.articlesName,
+                    style: blackTextStyle.copyWith(
+                        fontWeight: FontWeight.bold, fontSize: 12.0)),
+                SizedBox(height: 5.0),
+                Text(widget.articlesCourse,
+                    style: greyTextStyle.copyWith(fontSize: 10.0))
+              ],
             ),
-            onPressed: () {
-              setState(() {
-                isFavorite = !isFavorite;
-              });
-            },
-          ),
-        ],
+            Spacer(),
+            IconButton(
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: isFavorite ? Colors.redAccent : Colors.grey,
+                size: 16.0,
+              ),
+              onPressed: () {
+                setState(() {
+                  isFavorite = !isFavorite;
+                });
+              },
+            ),
+          ],
+        ),
       ),
-    );
+    ]);
   }
 }
